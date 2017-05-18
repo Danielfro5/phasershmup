@@ -10,6 +10,8 @@ var game = new Phaser.Game(1000,391, Phaser.AUTO);
 
 var GameState = {
  preload: function(){
+   //[NOTWORKING]game.world.bounds.setTo(0, 57, 393, 334);
+
    //load sprites
     game.load.image('bgtile', 'assets/images/background.png');
     game.load.image('bullet', 'assets/images/bullet.png');
@@ -17,15 +19,17 @@ var GameState = {
     game.load.spritesheet('ship','assets/images/spritesheet.png',288,122,4);
     game.load.spritesheet('civ','assets/images/spritesheet2.png',288,122,4);
 
+
+
    //load sound
     game.load.audio('track1','assets/sound/track1.wav');
  },
 
  create: function(){
 
-   //music
-    music = game.add.audio("track1");
-    music.play('',0,1,true);
+   //music[ADD MUSIC HERE]
+    //music = game.add.audio("track1");
+    //music.play('',0,1,true);
 
   //scrolling background
      bgtile = game.add.tileSprite(0, 0, 1270, 391, "bgtile");
@@ -46,7 +50,7 @@ var GameState = {
     bullets.setAll('checkWorldBounds', true);
 
    //civilian car
-   civ = game.add.sprite(950,150, 'civ');
+   civ = game.add.sprite(1200,150, 'civ');
    civ.animations.add('drive2',[0,1,2,3],36,true);
    civ.animations.play('drive2');
    civ.anchor.setTo(0.5,0.5);
@@ -61,7 +65,8 @@ var GameState = {
     //	physics
 
     game.physics.enable(ship, Phaser.Physics.ARCADE);
-    game.physics.setBounds(0, 57, 393, 400);
+    //
+    //game.physics.setBounds();
     ship.enableBody = true;
     game.physics.enable(civ, Phaser.Physics.ARCADE);
     civ.enableBody = true;
@@ -75,9 +80,10 @@ var GameState = {
    //player interactivity
    shooting();
    move(ship);
-   enemyType1(civ);
 
-    //the shooting
+   //enemyroutine
+   enemyType1(civ,-1500,150);
+
 
 
   }};
@@ -118,8 +124,16 @@ function shooting(){
           bulletTime = game.time.now += 200;
         }}}}
 
-function enemyType1(sprite){
-    civ.body.velocity.x = -800;
+function enemyType1(sprite,xSpeed){
+
+
+    sprite.body.velocity.x = xSpeed;
+    if(sprite.body.position.x < -300){
+      randY = Math.random()*391;
+      sprite.body.position.x = 1200;//randomize slightly in future
+      sprite.body.position.y = Math.random()*391;
+      console.log(randY);
+    }
 
 }
 

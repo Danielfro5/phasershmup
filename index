@@ -4,12 +4,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,mamixum-scale=1,minimum-scale=1,user-scalable=no">
 
 <head>
-<title>SHMUPSYTEM666</title>
-</head>
-<body>
-
+<title>SHMIP</title>
 <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="phaser.js"></script>
 <script type="text/javascript" src="main.js"></script>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body>
+<h1>SHMIP</h1>
+
 </body>
 </html>

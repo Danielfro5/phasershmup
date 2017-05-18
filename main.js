@@ -26,7 +26,7 @@ var GameState = {
  },
 
  create: function(){
-
+   this.game.scale.pageAlignHorizontally = true;this.game.scale.pageAlignVertically = true;this.game.scale.refresh();
    //music[ADD MUSIC HERE]
     //music = game.add.audio("track1");
     //music.play('',0,1,true);
@@ -81,8 +81,8 @@ var GameState = {
    shooting();
    move(ship);
 
-   //enemyroutine
-   enemyType1(civ,-1500,150);
+   //enemies
+   enemyType1(civ,-1500,1200);
 
 
 
@@ -124,13 +124,13 @@ function shooting(){
           bulletTime = game.time.now += 200;
         }}}}
 
-function enemyType1(sprite,xSpeed){
+function enemyType1(sprite,xSpeed,xPos){
 
 
     sprite.body.velocity.x = xSpeed;
     if(sprite.body.position.x < -300){
       randY = Math.random()*391;
-      sprite.body.position.x = 1200;//randomize slightly in future
+      sprite.body.position.x = 1200 + Math.random()*2000;//randomize slightly in future
       sprite.body.position.y = Math.random()*391;
       console.log(randY);
     }
